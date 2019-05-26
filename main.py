@@ -7,6 +7,7 @@ import os
 import argparse
 
 from ProcessData import *
+from EpiFeatureMatrix import *
 
 parser = argparse.ArgumentParser(description="Epi2HiC: Hi-C interaction prediction")
 
@@ -23,8 +24,8 @@ args = parser.parse_args()
 def print_dictionary_sample(D):
     count = 0
     for key in D:
-        print key, D[key]
-        if count == 10:
+        print key, D[key], D[key].shape
+        if count == 2:
             break
         count += 1
 
@@ -33,6 +34,8 @@ def main():
     # for cross validation
     if args.crossvalidation:
         data = DataProcess(args.interaction, args.neighbors, args.epigenetics)
+        epi_matrix = MatrixFormation(data)
+        epi_matrix.get_matrix_for_neighbor_matrix()
 
 
 if __name__ == '__main__':
