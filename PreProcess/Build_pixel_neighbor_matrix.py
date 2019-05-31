@@ -1,4 +1,5 @@
 """
+2.
 This code builds a dictionary that contains each region in center of a
 neighboring matrix of varying size matrix
 """
@@ -58,6 +59,8 @@ def main():
     infile = open(interaction_file, 'rb')
     interaction_dict = pickle.load(infile)
     infile.close()
+
+    print any(math.isnan(val) for val in interaction_dict.values())
 
     for pair in interaction_dict:
         region1 = int(pair[0])

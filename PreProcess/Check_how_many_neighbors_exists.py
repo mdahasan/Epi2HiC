@@ -1,4 +1,5 @@
 """
+3.
 This code checks how many of the neighbor for each positions
 actually exists in the interaction file
 """
